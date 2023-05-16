@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Candal&display=swap');
+body {
+  background-image: url("icberg.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: 'Candal', sans-serif;
+}
+
+
+.todo-item {
+    cursor: pointer;
+  }
+  
+li.completed {
+    text-decoration: line-through;
+    color: red;
+  }
+  
+li.incomplete {
+    text-decoration: none;
+    color: goldenrod;
+  }
+
+.todo-item-container {
+  background-color: black;
+  padding: 5px 15px;
+  border-radius: 5px;
+}
+
+.todo-item-container:hover {
+  background-color: #333;
+}
+  
+
+  /* Style for edit and delete buttons */
+button {
+  border: none;
+  background-color: #eee;
+  color: #333;
+  padding: 5px 10px;
+  margin-left: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Style for add todo form */
+form {
+  display: flex;
+  margin-top: 10px;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  margin: 15px;
+}
+
+button[type="submit"] {
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 20px;
+}
+
+/* Style for filter buttons */
+.filter-btn {
+  margin-right: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  border: none;
+  background-color: #eee;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.filter-btn.active {
+  background-color: #333;
+  color: #fff;
+}
+
+#todo-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+h1{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  color: #333;
+}

@@ -1,0 +1,630 @@
+interface Todo {
+  text: string;
+  completed: boolean;
+}
+
+const todos: Todo[] = [];
+
+function addTodo(text: string) {
+  const todo: Todo = {
+    text,
+    completed: false
+  };
+
+  todos.push(todo);
+}
+
+function completeTodo(index: number) {
+  todos[index].completed = true;
+}
+
+function removeTodo() {
+  todos.pop();
+}
+
+addTodo("Buy milk");
+addTodo("Walk the dog");
+completeTodo(0);
+
+const todoList = document.getElementById("todo-list");
+
+if (todoList) {
+  todos.forEach(todo => {
+    const li = document.createElement("li");
+    li.innerText = todo.text;
+    if (todo.completed) {
+      li.classList.add("completed");
+    }
+    todoList.appendChild(li);
+  });
+}
+
+
+
+
+interface Todo {
+    text: string;
+    completed: boolean;
+  }
+  
+  class TodoList {
+    private todos: Todo[] = [];
+  
+    addTodo (text: string) {
+      const todo: Todo = {
+        text,
+        completed: false
+      };
+  
+      this.todos.push(todo);
+    }
+  
+    completeTodo (index: number) {
+      this.todos[index].completed = true;
+    }
+  
+    removeTodo () {
+      this.todos.pop();
+    }
+  
+    render (listId: string) {
+      const todoList = document.getElementById(listId);
+  
+      if (todoList) {
+        todoList.innerHTML = '';
+        this.todos.forEach(todo => {
+          const li = document.createElement("li");
+          li.innerText = todo.text;
+          if (todo.completed) {
+            li.classList.add("completed");
+          }
+          todoList.appendChild(li);
+        });
+      }
+    }
+  }
+  
+  const todoList = new TodoList();
+  
+  todoList.addTodo("Buy milk");
+  todoList.addTodo("Walk the dog");
+  todoList.completeTodo(0);
+  todoList.render("todo-list");
+
+  
+  class TodoList {
+    private todos: Todo[] = [];
+  
+    constructor() {
+      this.render();
+    }
+  
+    private addTodo(text: string) {
+      const todo: Todo = {
+        text,
+        completed: false
+      };
+      this.todos.push(todo);
+      this.render();
+    }
+  
+    private completeTodo(index: number) {
+      this.todos[index].completed = true;
+      this.render();
+    }
+  
+    private removeTodo() {
+      this.todos.pop();
+      this.render();
+    }
+  
+    private render() {
+      const todoList = document.getElementById("todo-list");
+      if (todoList) {
+        todoList.innerHTML = "";
+        this.todos.forEach((todo, index) => {
+          const li = document.createElement("li");
+          li.innerText = todo.text;
+          if (todo.completed) {
+            li.classList.add("completed");
+          }
+          const completeButton = document.createElement("button");
+          completeButton.innerText = "Complete";
+          completeButton.addEventListener("click", () => {
+            this.completeTodo(index);
+          });
+          li.appendChild(completeButton);
+          todoList.appendChild(li);
+        });
+      }
+  
+      // Add a form to add new to-do items
+      const form = document.createElement("form");
+      const input = document.createElement("input");
+      const addButton = document.createElement("button");
+  
+      input.placeholder = "Add a new to-do item";
+      addButton.innerText = "Add";
+      addButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        const inputValue = input.value.trim();
+        if (inputValue) {
+          this.addTodo(inputValue);
+          input.value = "";
+        }
+      });
+  
+      form.appendChild(input);
+      form.appendChild(addButton);
+      todoList?.appendChild(form);
+    }
+  }
+  
+  const todoList = new TodoList();
+  interface Todo {
+    text: string;
+    completed: boolean;
+  }
+  
+  class TodoList {
+    private todos: Todo[] = [];
+  
+    constructor() {
+      this.render();
+    }
+  
+    private addTodo(text: string) {
+      const todo: Todo = {
+        text,
+        completed: false
+      };
+      this.todos.push(todo);
+      this.render();
+    }
+  
+    private toggleTodoComplete(index: number) {
+      this.todos[index].completed = !this.todos[index].completed;
+      this.render();
+    }
+  
+    private removeTodo() {
+      this.todos.pop();
+      this.render();
+    }
+  
+    private render() {
+      const todoList = document.getElementById("todo-list");
+      if (todoList) {
+        todoList.innerHTML = "";
+        this.todos.forEach((todo, index) => {
+          const li = document.createElement("li");
+          li.innerText = todo.text;
+          if (todo.completed) {
+            li.classList.add("completed");
+          }
+          li.addEventListener("click", () => {
+            this.toggleTodoComplete(index);
+          });
+          todoList.appendChild(li);
+        });
+      }
+  
+      // Add a form to add new to-do items
+      const form = document.createElement("form");
+      const input = document.createElement("input");
+      const addButton = document.createElement("button");
+  
+      input.placeholder = "Add a new to-do item";
+      addButton.innerText = "Add";
+      addButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        const inputValue = input.value.trim();
+        if (inputValue) {
+          this.addTodo(inputValue);
+          input.value = "";
+        }
+      });
+  
+      form.appendChild(input);
+      form.appendChild(addButton);
+      todoList?.appendChild(form);
+    }
+  }
+  
+  const todoList = new TodoList();
+
+  
+  interface Todo {
+    text: string;
+    completed: boolean;
+  }
+  
+  class TodoList {
+    private todos: Todo[] = [];
+  
+    constructor() {
+      this.render();
+    }
+  
+    private addTodo(text: string) {
+      const todo: Todo = {
+        text,
+        completed: false
+      };
+      this.todos.push(todo);
+      this.render();
+    }
+  
+    private toggleTodoComplete(index: number) {
+      this.todos[index].completed = !this.todos[index].completed;
+      this.render();
+    }
+  
+    private removeTodo() {
+      this.todos.pop();
+      this.render();
+    }
+  
+    private render() {
+      const todoList = document.getElementById("todo-list");
+      if (todoList) {
+        todoList.innerHTML = "";
+        this.todos.forEach((todo, index) => {
+          const li = document.createElement("li");
+          li.innerText = todo.text;
+  
+          // Add CSS classes based on completion status
+          li.classList.add("todo-item");
+          if (todo.completed) {
+            li.classList.add("completed");
+          } else {
+            li.classList.add("incomplete");
+          }
+  
+          li.addEventListener("click", () => {
+            this.toggleTodoComplete(index);
+          });
+          todoList.appendChild(li);
+        });
+      }
+  
+      // Add a form to add new to-do items
+      const form = document.createElement("form");
+      const input = document.createElement("input");
+      const addButton = document.createElement("button");
+  
+      input.placeholder = "Add a new to-do item";
+      addButton.innerText = "Add";
+      addButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        const inputValue = input.value.trim();
+        if (inputValue) {
+          this.addTodo(inputValue);
+          input.value = "";
+        }
+      });
+  
+      form.appendChild(input);
+      form.appendChild(addButton);
+      todoList?.appendChild(form);
+    }
+  }
+  
+  const todoList = new TodoList();
+  interface Todo {
+    text: string;
+    completed: boolean;
+  }
+  
+  class TodoList {
+    private todos: Todo[] = [];
+  
+    constructor() {
+      this.render();
+    }
+  
+    private addTodo(text: string) {
+      const todo: Todo = {
+        text,
+        completed: false
+      };
+      this.todos.push(todo);
+      this.render();
+    }
+  
+    private completeTodo(index: number) {
+      this.todos[index].completed = true;
+      this.render();
+    }
+  
+    private removeTodo() {
+      this.todos.pop();
+      this.render();
+    }
+  
+    private render() {
+      const todoList = document.getElementById("todo-list");
+      if (todoList) {
+        todoList.innerHTML = "";
+        this.todos.forEach((todo, index) => {
+          const li = document.createElement("li");
+          li.innerText = todo.text;
+          if (todo.completed) {
+            li.classList.add("completed");
+          } else {
+            li.classList.add("incomplete");
+          }
+          const completeButton = document.createElement("button");
+          completeButton.innerText = "Complete";
+          if (todo.completed) {
+            completeButton.style.display = "none";
+          } else {
+            completeButton.addEventListener("click", () => {
+              this.completeTodo(index);
+              completeButton.style.display = "none";
+            });
+          }
+          li.appendChild(completeButton);
+          todoList.appendChild(li);
+        });
+      }
+  
+      // Add a form to add new to-do items
+      const form = document.createElement("form");
+      const input = document.createElement("input");
+      const addButton = document.createElement("button");
+  
+      input.placeholder = "Add a new to-do item";
+      addButton.innerText = "Add";
+      addButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        const inputValue = input.value.trim();
+        if (inputValue) {
+          this.addTodo(inputValue);
+          input.value = "";
+        }
+      });
+  
+      form.appendChild(input);
+      form.appendChild(addButton);
+      todoList?.appendChild(form);
+    }
+  }
+  
+  const todoList = new TodoList();
+
+  
+  interface Todo {
+    text: string;
+    completed: boolean;
+  }
+  
+  class TodoList {
+    private todos: Todo[] = [];
+  
+    constructor() {
+      this.render();
+    }
+  
+    private addTodo(text: string) {
+      const todo: Todo = {
+        text,
+        completed: false
+      };
+      this.todos.push(todo);
+      this.render();
+    }
+  
+    private completeTodo(index: number) {
+      this.todos[index].completed = true;
+      this.render();
+    }
+  
+    private removeTodo() {
+      this.todos.pop();
+      this.render();
+    }
+  
+    private render() {
+      const todoList = document.getElementById("todo-list");
+      if (todoList) {
+        todoList.innerHTML = "";
+        this.todos.forEach((todo, index) => {
+          const li = document.createElement("li");
+          li.innerText = todo.text;
+          if (todo.completed) {
+            li.classList.add("completed");
+          } else {
+            li.classList.add("incomplete");
+          }
+          const completeButton = document.createElement("button");
+          completeButton.innerText = "Complete";
+          if (todo.completed) {
+            completeButton.style.display = "none";
+          } else {
+            completeButton.addEventListener("click", () => {
+              this.completeTodo(index);
+              completeButton.style.display = "none";
+            });
+          }
+          li.appendChild(completeButton);
+          todoList.appendChild(li);
+        });
+      }
+  
+      // Add a form to add new to-do items
+      const form = document.createElement("form");
+      const input = document.createElement("input");
+      const addButton = document.createElement("button");
+  
+      input.placeholder = "Add a new to-do item";
+      addButton.innerText = "Add";
+      addButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        const inputValue = input.value.trim();
+        if (inputValue) {
+          this.addTodo(inputValue);
+          input.value = "";
+        }
+      });
+  
+      form.appendChild(input);
+      form.appendChild(addButton);
+      todoList?.appendChild(form);
+    }
+  }
+  
+  const todoList = new TodoList();
+
+  
+  //SEPERATE RENDER 
+  private render() {
+    const todoList = document.getElementById("todo-list");
+    if (todoList) {
+      todoList.innerHTML = "";
+      this.renderTodoList(todoList);
+      this.renderAddTodoForm(todoList);
+    }
+  }
+  
+  private renderTodoList(todoList: HTMLElement) {
+    this.todos.forEach((todo, index) => {
+      const li = document.createElement("li");
+      li.innerText = todo.text;
+      if (todo.completed) {
+        li.classList.add("completed");
+      } else {
+        li.classList.add("incomplete");
+      }
+  
+      const completeButton = document.createElement("button");
+      completeButton.innerText = "Complete";
+      if (todo.completed) {
+        completeButton.style.display = "none";
+      } else {
+        completeButton.addEventListener("click", () => {
+          this.completeTodo(index);
+          completeButton.style.display = "none";
+        });
+      }
+      li.appendChild(completeButton);
+  
+      const editButton = document.createElement("button");
+      editButton.innerText = "Edit";
+      editButton.addEventListener("click", () => {
+        this.renderEditTodoForm(li, todo, index);
+      });
+      li.appendChild(editButton);
+  
+      todoList.appendChild(li);
+    });
+  }
+  
+  private renderEditTodoForm(li: HTMLLIElement, todo: Todo, index: number) {
+    const editInput = document.createElement("input");
+    editInput.type = "text";
+    editInput.value = todo.text;
+    editInput.addEventListener("keydown", (event) => {
+        if(event.key === "Enter"){
+            const newText = editInput.value.trim();
+            if(newText){
+                this.editTodoText(index, newText);
+            }
+        }
+    })
+    li.replaceChild(editInput, li.firstChild);
+    editInput.select();
+  }
+  
+  private renderAddTodoForm(todoList: HTMLElement) {
+    const form = document.createElement("form");
+    const input = document.createElement("input");
+    const addButton = document.createElement("button");
+  
+    input.placeholder = "Add a new to-do item";
+    addButton.innerText = "Add";
+    addButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      const inputValue = input.value.trim();
+      if (inputValue) {
+        this.addTodo(inputValue);
+        input.value = "";
+      }
+    });
+  
+    form.appendChild(input);
+    form.appendChild(addButton);
+    todoList.appendChild(form);
+  }
+
+  
+  private render() {
+    const todoList = document.getElementById("todo-list");
+    if (todoList) {
+      todoList.innerHTML = "";
+  
+      this.todos.forEach((todo, index) => {
+        const li = document.createElement("li");
+        li.innerText = todo.text;
+        if (todo.completed) {
+          li.classList.add("completed");
+        } else {
+          li.classList.add("incomplete");
+        }
+  
+        const completeButton = document.createElement("button");
+        completeButton.innerText = "Complete";
+        if (todo.completed) {
+          completeButton.style.display = "none";
+        } else {
+          completeButton.addEventListener("click", () => {
+            this.completeTodo(index);
+            completeButton.style.display = "none";
+          });
+        }
+        li.appendChild(completeButton);
+  
+        const editButton = document.createElement("button");
+        editButton.innerText = "Edit";
+        editButton.addEventListener("click", () => {
+          this.editTodoText(index);
+        });
+        li.appendChild(editButton);
+  
+        const deleteButton = document.createElement("button");
+        deleteButton.innerText = "Delete";
+        deleteButton.addEventListener("click", () => {
+          this.deleteTodo(index);
+        });
+        li.appendChild(deleteButton);
+  
+        todoList.appendChild(li);
+      });
+    }
+  
+    // Add a form to add new to-do items
+    const form = document.createElement("form");
+    const input = document.createElement("input");
+    const addButton = document.createElement("button");
+  
+    input.placeholder = "Add a new to-do item";
+    addButton.innerText = "Add";
+    addButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      const inputValue = input.value.trim();
+      if (inputValue) {
+        this.addTodo(inputValue);
+        input.value = "";
+      }
+    });
+  
+    form.appendChild(input);
+    form.appendChild(addButton);
+    todoList?.appendChild(form);
+  }
+
+  private deleteTodo(index: number) {
+    this.todos.splice(index, 1);
+    this.render();
+  }
+  
